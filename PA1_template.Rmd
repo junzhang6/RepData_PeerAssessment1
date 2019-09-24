@@ -52,6 +52,8 @@ avg_step[avg_step$Avg_step_perday==max(avg_step$Avg_step_perday), ]
 nrow(filter(data, is.na(steps)==T))
 ```
 
+ - **Here, I use the values of avgerage of steps for each interval to fill the NAs**. 
+ 
 ```{r}
 mean_by_interval <- data_woNA %>% group_by(interval) %>% 
         summarise(mean_steps_int = mean(steps))
@@ -84,7 +86,7 @@ hist(tot_step$Step_perday, breaks=53, xlab="Total Steps",
      main="Histogram of the Total Number of \n Steps Taken Each Day")
 ```
 
-The result of mean and median total number of steps taken per day is pretty much the same as before. However, the histograms are slightly different. The data with NAs filled captures more observations of total number of steps around 10000. 
+ - **The result of mean and median total number of steps taken per day is pretty much the same as before. However, the histograms are slightly different. The data with NAs filled captures more observations of total number of steps around 10000**. 
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
@@ -115,6 +117,8 @@ ggplot(data_fillNA_withDay_int, aes(interval, Avg_steps, color=Day_type)) +
         labs(y="Average Steps", 
              title="Time Series Plot of the 5-Minute Interval \n and the Average number of Steps Taken")
 ```
+
+
 
 
 
